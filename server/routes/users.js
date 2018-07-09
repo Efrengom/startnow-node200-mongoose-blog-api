@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
         .then(users => {
             console.log('/');
             res.status(200).json(users);
-        });
+        })
+        .catch();
 });
 
 router.get('/:id', (req, res) => {
