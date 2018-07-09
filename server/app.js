@@ -1,18 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-require('dotenv').config();
 
 const url = 'mongodb://localhost/my-blog';
 
-mongoose.connect(process.env.MLAB /*|| url, { useMongoClient: true }*/);
+mongoose.connect(url/*, { useMongoClient: true }*/);
 
 mongoose.Promise = Promise;
 
 const app = express();
 
 app.use(bodyParser.json());
-app.set('port', process.env.PORT || 8080)
 
 app.use('/api/users', require('./routes/users'));
 
