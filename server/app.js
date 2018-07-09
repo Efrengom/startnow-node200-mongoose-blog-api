@@ -4,7 +4,11 @@ const bodyParser = require('body-parser');
 
 const url = 'mongodb://localhost/my-blog';
 
-mongoose.connect(process.env.MLAB/*url, { useMongoClient: true }*/);
+if (process.env.ENV == 'production') {
+    mongoose.connect(process.env.MONGODB_URI/*url, { useMongoClient: true }*/);
+}else{
+    mongoose.connect(url);
+}
 
 mongoose.Promise = Promise;
 
