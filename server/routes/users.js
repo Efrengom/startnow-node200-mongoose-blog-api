@@ -3,17 +3,17 @@ const router = express.Router();
 const User = require('../models/User');
 const Blog = require('../models/Blog');
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, done) => {
     User
         .find({})
         .then(users => {
             console.log('/');
             res.status(200).json(users);
+            done();
         })
-        .catch();
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res, done) => {
     User    
         .findById(req.params.id)
         .then(function (userID, err) {
@@ -23,7 +23,8 @@ router.get('/:id', (req, res) => {
             }else{
                 console.log('error');
                 res.status(404).send('User ID does not exist');
-            }
+            };
+            done();
         })
 });
 
