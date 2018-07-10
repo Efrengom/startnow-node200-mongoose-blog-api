@@ -17,12 +17,12 @@ router.get('/', (req, res) => {
 router.get('/featured', (req, res) => {
     Blog
         .where('featured').equals(true)
-        .exec(function(err, featured) {
-            if(err) {
-                res.status(404).send('error occured')
-            }else{
+        .then(featured => {
+            if(featured) {
                 console.log('/featured');
                 res.status(200).json(featured);
+            }else{
+                res.status(404).send('error occured')
             }
         })
         .catch(err => {
