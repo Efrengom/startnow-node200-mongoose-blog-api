@@ -1,7 +1,7 @@
 // Imports mongoose and extracts schema into its own variable
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ObjectId = mongoose.Schema.Types.ObjectId;
+//const ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Create a new mongoose schema with two properties
 const UserSchema = new Schema({ 

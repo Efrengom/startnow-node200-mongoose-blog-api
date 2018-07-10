@@ -8,8 +8,10 @@ router.get('/', (req, res) => {
         .find()
         .then(blogs => {
             res.status(200).json(blogs);
-        });
-        
+        })
+        .catch(err => {
+            res.status(500).send('error')
+        })        
 });
 
 router.get('/featured', (req, res) => {
@@ -22,6 +24,9 @@ router.get('/featured', (req, res) => {
                 console.log('/featured');
                 res.status(200).json(featured);
             }
+        })
+        .catch(err => {
+            res.status(500).send('error')
         })
 });
 
@@ -38,7 +43,7 @@ router.get('/:id', (req, res) => {
             }
         })
         .catch(err => {
-            res.status(500).send(err)
+            res.status(404).send('error')
             })
 });
 
@@ -68,7 +73,9 @@ router.post('/', (req, res) => {
         // Save the user back to the database and respond to the original HTTP request with a copy of the newly created blog.
         dbUser.save().then(() => res.status(201).json(blog));
     })
-   
+    .catch(err => {
+        res.status(500).send('error')
+    })   
 });
 
 router.put('/:id', (req, res) => {
@@ -84,6 +91,9 @@ router.put('/:id', (req, res) => {
             // res.status(204).json(item)
             }
         })
+        .catch(err => {
+            res.status(500).send('error')
+        })
 });
 
 router.delete('/:id', (req, res) => {
@@ -91,7 +101,10 @@ router.delete('/:id', (req, res) => {
         .findByIdAndRemove(req.params.id)
         .then(blogs => {
             res.status(200).json(blogs);
-        });
+        })
+        .catch(err => {
+            res.status(404).send('error')
+        })
 });
 
 module.exports = router;
