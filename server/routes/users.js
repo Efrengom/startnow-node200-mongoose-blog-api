@@ -9,12 +9,11 @@ router.get('/', (req, res) => {
         .then(users => {
             console.log('/');
             res.status(200).json(users);
-            done();
         })
         .catch(err => res.status(404).send('error'))
 });
 
-router.get('/:id', (req, res, done) => {
+router.get('/:id', (req, res) => {
     User    
         .findById(req.params.id)
         .then(function (userID, err) {
@@ -26,7 +25,7 @@ router.get('/:id', (req, res, done) => {
                 res.status(404).send('User ID does not exist');
             };
         })
-        .catch(err => res.status(404).send('error'));
+        // .catch(err => res.status(404).send('error'));
 });
 
 router.post('/', (req, res) => {

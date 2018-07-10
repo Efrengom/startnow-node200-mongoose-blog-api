@@ -25,9 +25,9 @@ router.get('/featured', (req, res) => {
                 res.status(404).send('error occured')
             }
         })
-        .catch(err => {
-            res.status(500).send('error')
-        })
+        // .catch(err => {
+        //     res.status(500).send('error')
+        // })
 });
 
 router.get('/:id', (req, res) => {
@@ -42,9 +42,9 @@ router.get('/:id', (req, res) => {
                 res.status(200).json(blog);
             }
         })
-        .catch(err => {
-            res.status(404).send('error')
-            })
+        // .catch(err => {
+        //     res.status(404).send('error')
+        //     })
 });
 
 router.post('/', (req, res) => {
@@ -91,9 +91,9 @@ router.put('/:id', (req, res) => {
             // res.status(204).json(item)
             }
         })
-        .catch(err => {
-            res.status(500).send('error')
-        })
+        // .catch(err => {
+        //     res.status(500).send('error')
+        // })
 });
 
 router.delete('/:id', (req, res) => {
