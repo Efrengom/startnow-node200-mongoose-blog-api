@@ -5,9 +5,9 @@ const bodyParser = require('body-parser');
 const url = 'mongodb://localhost/my-blog';
 
 if (process.env.ENV == 'production') {
-    mongoose.connect(process.env.MONGODB_URI/*url, { useMongoClient: true }*/);
+    mongoose.connect(process.env.MONGODB_URI);
 }else{
-    mongoose.connect(url, { useMongoClient: true });
+mongoose.connect(url, /*{ useMongoClient: true }*/);
 }
 
 mongoose.Promise = Promise;
